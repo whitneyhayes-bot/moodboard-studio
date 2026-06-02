@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useEffect } from 'react'
+uimport { useState, useRef, useCallback, useEffect } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Studio.module.css'
 
@@ -96,14 +96,14 @@ export default function Studio() {
     const img = new Image()
     img.crossOrigin = 'anonymous'
     img.onload = () => {
-      const MAX = 768
+      const MAX = 500
       let w = img.width, h = img.height
       if (w > MAX) { h = Math.round(h * MAX / w); w = MAX }
       if (h > MAX) { w = Math.round(w * MAX / h); h = MAX }
       const c = document.createElement('canvas')
       c.width = w; c.height = h
       c.getContext('2d').drawImage(img, 0, 0, w, h)
-      resolve(c.toDataURL('image/jpeg', 0.85))
+      resolve(c.toDataURL('image/jpeg', 0.4))
     }
     img.onerror = () => resolve(null)
     img.src = src
